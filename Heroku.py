@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 30 14:06:09 2024
-
 @author: Esteban Tamayo
 """
 
@@ -53,7 +51,10 @@ df_permanence = pd.DataFrame({
 })
 
 # Create a Dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],serve_locally = False)
+
+# add this for heroku
+server = app.server
 
 # Define a function to get color based on distance
 def get_color(distance):
