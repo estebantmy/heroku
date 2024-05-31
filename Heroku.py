@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 30 14:06:09 2024
 
 @author: Esteban Tamayo
 """
