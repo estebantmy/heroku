@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-@author: Esteban Tamayo
-"""
 
 import dash
 from dash import dcc, html
@@ -56,11 +52,11 @@ server = app.server  # Expose the server variable for Heroku
 # Define a function to get color based on distance
 def get_color(distance):
     if distance < 5:
-        return 'green'
+        return '5km'
     elif 5 <= distance < 10:
-        return 'orange'
+        return '5-10km'
     else:
-        return 'red'
+        return '>10km'
 
 # Create a scatter mapbox figure
 fig = px.scatter_mapbox(
@@ -95,7 +91,7 @@ fig.add_scattermapbox(
     mode='markers',
     marker=dict(
         size=9,
-        color='black'
+        color='black',
     ),
     text='Permanence Location',
     name='Permanence Locations'
@@ -105,7 +101,29 @@ fig.add_scattermapbox(
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
-            dcc.Graph(figure=fig)
+            dcc.Tabs([
+                dcc.Tab(label='Small Map', children=[
+                    dcc.Graph(figure=fig)
+                ]),
+                dcc.Tab(label='Image 1', children=[
+                    html.Img(src='https://raw.githubusercontent.com/estebantmy/heroku/main/recommendations1.png', style={'width': '100%'})
+                ]),
+                dcc.Tab(label='Image 2', children=[
+                    html.Img(src='https://raw.githubusercontent.com/estebantmy/heroku/main/recommendations2.png', style={'width': '100%'})
+                ]),
+                dcc.Tab(label='Image 3', children=[
+                    html.Img(src='https://raw.githubusercontent.com/estebantmy/heroku/main/recommendations3.png', style={'width': '100%'})
+                ]),
+                dcc.Tab(label='Image 4', children=[
+                    html.Img(src='https://raw.githubusercontent.com/estebantmy/heroku/main/recommendations4.png', style={'width': '100%'})
+                ]),
+                dcc.Tab(label='Image 5', children=[
+                    html.Img(src='https://raw.githubusercontent.com/estebantmy/heroku/main/recommendations5(1).png', style={'width': '100%'})
+                ]),
+                dcc.Tab(label='Image 6', children=[
+                    html.Img(src='https://raw.githubusercontent.com/estebantmy/heroku/main/zoom_in5.png', style={'width': '100%'})
+                ]),
+            ])
         ], width=12)
     ])
 ])
